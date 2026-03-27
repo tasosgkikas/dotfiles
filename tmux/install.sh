@@ -11,7 +11,7 @@ if [ -f ~/.tmux.conf ]; then
     mv ~/.tmux.conf ~/.tmux.conf.backup
     echo "   (Backed up existing .tmux.conf)"
 fi
-ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+ln -sf ~/dotfiles/tmux/.conf ~/.tmux.conf
 
 # 3. Safely backup and symlink the themes folder
 echo "🎨 Symlinking themes..."
@@ -19,7 +19,7 @@ if [ -d ~/.tmux/themes ]; then
     mv ~/.tmux/themes ~/.tmux/themes.backup
     echo "   (Backed up existing themes folder)"
 fi
-ln -s ~/dotfiles/.tmux/themes ~/.tmux/themes
+ln -sf ~/dotfiles/tmux/themes ~/.tmux/themes
 
 # 4. Download Tmux Plugin Manager (TPM)
 if [ ! -d "/home/tasos/.tmux/plugins/tpm" ]; then
