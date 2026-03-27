@@ -29,4 +29,15 @@ else
     echo "✅ TPM is already installed."
 fi
 
+# 5. Download Custom Themes
+if [ ! -d "$HOME/.tmux/themes/dracula" ]; then
+    echo "🧛 Downloading Dracula theme..."
+    git clone https://github.com/dracula/tmux ~/.tmux/themes/dracula
+fi
+
+if [ ! -d "$HOME/.tmux/themes/catppuccin" ]; then
+    echo "☕ Downloading Catppuccin theme..."
+    git clone https://github.com/catppuccin/tmux ~/.tmux/themes/catppuccin
+fi
+
 echo "🎉 All done! Start tmux and press [Prefix + Shift + I] to load your plugins."
