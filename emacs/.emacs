@@ -43,7 +43,6 @@
     ("melpa-stable" . "https://stable.melpa.org/packages/")
     ("melpa" . "https://melpa.org/packages/")))
 
-;; (package-refresh-contents)
 (package-initialize)
 
 ;; Check for packages missing from standard setup
@@ -72,13 +71,15 @@
     ;; (with-editor . elpa)
     (flycheck-clj-kondo . melpa)
     (zerodark-theme . elpa)
-    (zprint-mode . elpa)))
+    (zprint-mode . elpa)
+    (undo-tree . elpa)))
 
 (let ((not-installed (seq-filter #'(lambda (x)
 				      (not (package-installed-p (car x))))
 				  *stdpackages*)))
   (when (and not-installed
 	     (yes-or-no-p "Missing packages. Install them now? "))
+    (package-refresh-contents)
     (dolist (p not-installed)
       (package-install (car p) (cdr p)))))
 
