@@ -40,4 +40,12 @@ if [ ! -d "$HOME/.tmux/themes/catppuccin" ]; then
     git clone https://github.com/catppuccin/tmux ~/.tmux/themes/catppuccin
 fi
 
+# 6. Safely backup and symlink Emacs config
+echo "📝 Symlinking .emacs..."
+if [ -f ~/.emacs ]; then
+    mv ~/.emacs ~/.emacs.backup
+    echo "   (Backed up existing .emacs)"
+fi
+ln -s ~/dotfiles/.emacs ~/.emacs
+
 echo "🎉 All done! Start tmux and press [Prefix + Shift + I] to load your plugins."
