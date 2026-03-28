@@ -14,9 +14,6 @@
 		       (region-beginning) (region-end)
 		       "/usr/bin/zprint" (current-buffer) t))))
 
-;; new additions
-;; (hl-line-mode)
-
 (defun colorize-region ()
   (interactive)
   (ansi-color-apply-on-region (region-beginning) (region-end)))
@@ -451,3 +448,11 @@
    '((cider-figwheel-main-default-options . ":dev")
      (cider-default-cljs-repl . figwheel-main)
      (cider-clojure-cli-aliases . "-A:dev"))))
+
+;; ========================================================
+;; Machine-Specific Local Overrides
+;; (Must be at the very bottom so it gets the final say!)
+;; ========================================================
+(let ((local-config (expand-file-name "~/.emacs.local")))
+  (when (file-exists-p local-config)
+    (load local-config)))
