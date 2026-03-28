@@ -11,6 +11,15 @@ This repository is designed to be instantly deployable on any new machine (macOS
 
 ---
 
+## 📋 Prerequisites
+Before running the installers, ensure your system has the following base packages installed:
+* `git` (to clone this repository, TPM, and custom themes)
+* `curl` (to download the Hack Nerd Font)
+* `unzip` (to extract the downloaded font)
+* `tmux` & `emacs` (the core tools being configured)
+
+---
+
 ## 📦 Installation
 
 **1. Clone the repository:**
