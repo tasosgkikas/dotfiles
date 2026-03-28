@@ -14,18 +14,18 @@ This repository is designed to be instantly deployable on any new machine (macOS
 ## 📦 Installation
 
 **1. Clone the repository:**
-\`\`\`bash
-git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/dotfiles
+```bash
+git clone https://github.com/tasosgkikas/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-\`\`\`
+```
 
 **2. Run the modular installers:**
 You can install everything, or just the tools you need for a specific environment.
-\`\`\`bash
+```bash
 ./bash/install.sh
 ./tmux/install.sh
 ./emacs/install.sh
-\`\`\`
+```
 
 ---
 
@@ -36,14 +36,14 @@ The Tmux installer includes a script that downloads the **Hack Nerd Font** to yo
 
 * Open your Terminal Preferences.
 * Navigate to the Font selection screen.
-* Uncheck "Show only monospace fonts" (if applicable).
-* Select `Hack Nerd Font`.
+* Uncheck `Show only monospace fonts` (if applicable).
+* Select `Hack Nerd Font Mono`.
 
 > **Troubleshooting (Linux):** If the font does not appear in your dropdown menu after running the script, your terminal server is likely caching the old font list. Close your work, open a single terminal, and run:
-> \`killall gnome-terminal-server\`
+> `killall gnome-terminal-server`
 
 ### 2. Tmux Plugins
-After starting Tmux for the first time, press \`Prefix + Shift + I\` (capital i) to fetch and load the TPM plugins and themes.
+After starting Tmux for the first time, fetch and load the TPM plugins and themes with `Prefix + Shift-i` (`Prefix` is `Ctrl-b` by default, unless otherwise set in `~/.tmux.conf.local`).
 
 ---
 
@@ -51,17 +51,17 @@ After starting Tmux for the first time, press \`Prefix + Shift + I\` (capital i)
 
 Do not edit the tracked dotfiles to make machine-specific changes (like adjusting font size for a 4K monitor or setting a work email). Instead, create a local override file in your home directory. These files are git-ignored by default.
 
-### Emacs (\`~/.emacs.local\`)
+### Emacs (`~/.emacs.local`)
 Created locally to override themes, fonts, or store API keys. 
-\`\`\`elisp
+```elisp
 ;; Example ~/.emacs.local
-(set-face-attribute 'default nil :height 160) ;; Larger font for 4K display
+(set-face-attribute 'default nil :height 120) ;; Larger font for 4K display
 (load-theme 'dracula t)                       ;; Override the default zerodark theme
-\`\`\`
+```
 
-### Tmux (\`~/.tmux.conf.local\`)
+### Tmux (`~/.tmux.conf.local`)
 Created locally to override keybindings or add machine-specific TPM plugins before TPM initializes.
-\`\`\`tmux
+```tmux
 # Example ~/.tmux.conf.local
 set -g status-position top   # Move status bar to the top on this specific laptop
-\`\`\`
+```
