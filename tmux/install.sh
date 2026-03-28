@@ -82,4 +82,8 @@ safe_clone "https://github.com/tmux-plugins/tpm" "$TMUX_DIR/plugins/tpm" "tpm" "
 safe_clone "https://github.com/dracula/tmux" "$THEMES_TARGET/dracula" "dracula.tmux" "Dracula Theme"
 safe_clone "https://github.com/catppuccin/tmux" "$THEMES_TARGET/catppuccin" "catppuccin.tmux" "Catppuccin Theme"
 
+# Install font dependencies
+# Required for powerline's angled widget dividers of dracula status bar theme
+"$DOTFILES_TMUX/install-hack-nerd-font.sh"
+
 echo "🎉 Tmux setup complete! Start tmux and load your plugins with [Prefix + Shift-i]."
