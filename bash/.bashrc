@@ -120,3 +120,12 @@ fi
 . "$HOME/.asdf/completions/asdf.bash"
 
 eval $(ssh-agent)
+
+# ========================================================
+# Machine-Specific Local Overrides
+# This sources a local file that is NOT tracked by Git.
+# Put your private API keys and machine-specific paths there!
+# ========================================================
+if [ -f "$HOME/.bashrc.local" ]; then
+    source "$HOME/.bashrc.local"
+fi
