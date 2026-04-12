@@ -55,7 +55,10 @@
     ;; (geiser . elpa)
     (cider . elpa)
     (clojure-mode . elpa)
+    (go-mode . elpa)
     (json-mode . elpa)
+    (lsp-mode . melpa)
+    (lsp-ui . melpa)
     (magit . elpa)
     (markdown-mode . elpa)
     (paredit . elpa)
@@ -86,7 +89,7 @@
       slime-contribs '(slime-fancy)
       scheme-program-name "guile"
       browse-url-browser-function #'browse-url-firefox
-      exec-path (append exec-path '("~/bin")))
+      exec-path (append exec-path '("~/bin" "~/go/bin")))
 
 ;; Disable lockfiles and centralize auto-saves, backups and undo history
 (setq create-lockfiles nil
@@ -197,9 +200,18 @@
 
 
 ;; Go
-;; (with-eval-after-load 'go-mode
-;;   (setq gofmt-command "goimports")
-;;   (add-hook 'before-save-hook #'gofmt-before-save))
+(defun setup-go-environment ()
+  "Enable standard minor modes for Go buffers."
+  (lsp-deferred)
+  (setq-local tab-width 4
+              indent-tabs-mode t)
+  (company-mode 1)
+  (display-line-numbers-mode 1)
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+
+(with-eval-after-load 'go-mode
+  (add-hook 'go-mode-hook #'setup-go-environment))
 
 ;; ;; Frame
 ;; ;; In case it's missing, navajowhite is 0xFFDEAD

@@ -121,6 +121,9 @@ fi
 
 eval $(ssh-agent)
 
+# Add Go binaries to PATH
+export PATH="$HOME/go/bin:$PATH"
+
 # ========================================================
 # Machine-Specific Local Overrides
 # This sources a local file that is NOT tracked by Git.
