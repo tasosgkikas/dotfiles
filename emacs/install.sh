@@ -38,4 +38,27 @@ else
     fi
 fi
 
+# Check for clojure-lsp (Clojure language server) and install if missing
+if command -v clojure-lsp &> /dev/null; then
+    echo "✅ clojure-lsp is already installed."
+else
+    echo "🔍 clojure-lsp not found. Installing the Clojure language server..."
+    TEMP_INSTALLER=$(mktemp /tmp/clojure-lsp-install.XXXXXX)
+    if curl -sLo "$TEMP_INSTALLER" https://raw.githubusercontent.com/clojure-lsp/clojure-lsp/master/install; then
+        chmod +x "$TEMP_INSTALLER"
+        if sudo "$TEMP_INSTALLER"; then
+            if command -v clojure-lsp &> /dev/null; then
+                echo "✅ clojure-lsp installed successfully."
+            else
+                echo "❌ clojure-lsp installation finished but binary not found in PATH."
+            fi
+        else
+            echo "❌ sudo installation of clojure-lsp failed."
+        fi
+    else
+        echo "❌ Failed to download clojure-lsp installer."
+    fi
+    rm -f "$TEMP_INSTALLER"
+fi
+
 echo "✅ Emacs setup complete!"

@@ -169,6 +169,7 @@
 ;; Clojure & CIDER
 (defun setup-clojure-environment ()
   "Enable standard minor modes for Clojure buffers and the REPL."
+  (lsp-deferred)
   (show-paren-mode 1)
   (rainbow-delimiters-mode 1)
   (flycheck-mode 1)
@@ -179,8 +180,7 @@
 (with-eval-after-load 'clojure-mode
   (require 'flycheck-clj-kondo)
   (add-hook 'clojure-mode-hook #'setup-clojure-environment)
-  (add-hook 'clojure-mode-hook #'display-line-numbers-mode)
-  (define-key clojure-mode-map (kbd "M-.") 'cider-find-var))
+  (add-hook 'clojure-mode-hook #'display-line-numbers-mode))
 
 (with-eval-after-load 'cider
   (global-set-key (kbd "C-x C-h C-o") 'cider-repl-clear-buffer)
