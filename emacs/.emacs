@@ -56,6 +56,8 @@
     (cider . elpa)
     (clojure-mode . elpa)
     (go-mode . elpa)
+    (dart-mode . melpa)
+    (flutter . melpa)
     (json-mode . elpa)
     (lsp-mode . melpa)
     (lsp-ui . melpa)
@@ -77,11 +79,11 @@
 (let ((not-installed (seq-filter #'(lambda (x)
 				      (not (package-installed-p (car x))))
 				  *stdpackages*)))
-  (when (and not-installed
-	     (yes-or-no-p "Missing packages. Install them now? "))
-    (package-refresh-contents)
-    (dolist (p not-installed)
-      (package-install (car p) (cdr p)))))
+  (when not-installed
+    (when (or noninteractive (yes-or-no-p "Missing packages. Install them now? "))
+      (package-refresh-contents)
+      (dolist (p not-installed)
+        (package-install (car p) (cdr p))))))
 
 ;; Core Global Variables
 (setq ispell-program-name "aspell"
@@ -89,7 +91,7 @@
       slime-contribs '(slime-fancy)
       scheme-program-name "guile"
       browse-url-browser-function #'browse-url-firefox
-      exec-path (append exec-path '("~/bin" "~/go/bin")))
+      exec-path (append exec-path (mapcar #'expand-file-name '("~/bin" "~/go/bin" "~/flutter/bin"))))
 
 ;; Disable lockfiles and centralize auto-saves, backups and undo history
 (setq create-lockfiles nil
@@ -212,6 +214,24 @@
 
 (with-eval-after-load 'go-mode
   (add-hook 'go-mode-hook #'setup-go-environment))
+
+;; Dart & Flutter
+(defun setup-dart-environment ()
+  "Enable standard minor modes for Dart/Flutter buffers."
+  (lsp-deferred)
+  (setq-local tab-width 2
+              indent-tabs-mode nil)
+  (company-mode 1)
+  (display-line-numbers-mode 1)
+  (add-hook 'before-save-hook #'lsp-format-buffer t t))
+
+(with-eval-after-load 'dart-mode
+  (add-hook 'dart-mode-hook #'setup-dart-environment))
+
+(with-eval-after-load 'flutter
+  (setq flutter-sdk-path (expand-file-name "~/flutter/"))
+  (define-key flutter-mode-map (kbd "C-c C-r") #'flutter-run-or-hot-reload))
+
 
 ;; ;; Frame
 ;; ;; In case it's missing, navajowhite is 0xFFDEAD
