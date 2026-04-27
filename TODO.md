@@ -3,6 +3,7 @@
 ## 📋 Kanban Board
 
 ### 🚧 In Progress
+- [ ] **[7]** Dockerized test environment for installers. (Branch: `feature/docker-test-env`)
 - [ ] **[12]** Foundational Flutter support: Installer script, PATH, and Emacs configuration.
 
 ### 🎯 Selected for Development
@@ -12,7 +13,6 @@
 - [ ] **[4]** Install `mesa-utils` for Linux diagnostics.
 - [ ] **[5]** Automate `gopls` and `clojure-lsp` installations.
 - [ ] **[6]** Audit all scripts for idempotency and safety.
-- [ ] **[7]** Dockerized test environment for installers.
 
 ### 💤 Backlog
 - [ ] **[8]** Formalize ASDF/Plugin installs in `bash/install.sh`.
