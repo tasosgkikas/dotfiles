@@ -19,6 +19,8 @@
 - [ ] **[9]** CI Pipeline for script linting.
 - [ ] **[10]** Verify Hack Nerd Font rendering across terminal emulators.
 - [ ] **[11]** Potential modular config for Neovim.
+- [ ] **[16]** Smart Installers: Detect and install missing language runtimes (go, clojure, etc.) via apt.
+- [ ] **[17]** Consider removing ASDF support and relying on standard system binaries.
 
 ## ✅ Done
 - [x] **[0]** Initialize project-wide roadmap with numeric ticket codes.
