@@ -7,7 +7,9 @@ TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 # ==========================================
 # PATH DEFINITIONS
 # ==========================================
-SOURCE="$HOME/dotfiles/emacs/.emacs"
+# Get the absolute path of the dotfiles directory relative to this script
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SOURCE="$DOTFILES_DIR/emacs/.emacs"
 TARGET="$HOME/.emacs"
 # ==========================================
 
@@ -24,6 +26,10 @@ fi
 
 echo "   🔗 Symlinking: $SOURCE -> $TARGET"
 ln -s "$SOURCE" "$TARGET"
+
+echo "📦 Installing Emacs packages..."
+# Ensure packages are installed without opening the UI
+emacs --batch --eval "(package-initialize)" --eval "(package-install-selected-packages)"
 
 # Check for gopls (Go language server) and install if missing
 if command -v gopls &> /dev/null; then
@@ -59,6 +65,14 @@ else
         echo "❌ Failed to download clojure-lsp installer."
     fi
     rm -f "$TEMP_INSTALLER"
+fi
+
+# Check for Flutter (SDK) and suggest installation if missing
+if command -v flutter &> /dev/null; then
+    echo "✅ flutter is already installed."
+else
+    echo "🔍 flutter not found."
+    echo "💡 To install the Flutter SDK, run: $DOTFILES_DIR/install-flutter.sh"
 fi
 
 echo "✅ Emacs setup complete!"
