@@ -30,6 +30,7 @@
 - [x] **[0]** Initialize project-wide roadmap with numeric ticket codes.
 - [x] **[13]** Restore April 12th session history from logs.
 - [x] **[18]** Remove `clojure-lsp` support and binary installation.
+- [x] **[19]** Initialize project instructions and workflow rules (`GEMINI.md`). (Branch: `19-chore/gemini-instructions`)
 
 ---
 *Last updated: April 20, 2026*
