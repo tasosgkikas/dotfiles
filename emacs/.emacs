@@ -171,7 +171,6 @@
 ;; Clojure & CIDER
 (defun setup-clojure-environment ()
   "Enable standard minor modes for Clojure buffers and the REPL."
-  (lsp-deferred)
   (show-paren-mode 1)
   (rainbow-delimiters-mode 1)
   (flycheck-mode 1)
@@ -200,6 +199,12 @@
 (require 'swiper)
 (global-set-key (kbd "C-x C-h C-s") 'swiper)
 
+
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-disabled-clients 'clojure-lsp)
+  (setq lsp-client-packages (delq 'clojure-mode lsp-client-packages))
+  (setq lsp-client-packages (delq 'clojurescript-mode lsp-client-packages))
+  (setq lsp-client-packages (delq 'clojurec-mode lsp-client-packages)))
 
 ;; Go
 (defun setup-go-environment ()
