@@ -3,6 +3,7 @@
 ## 📋 Kanban Board
 
 ### 🚧 In Progress
+- [ ] **[18]** Remove `clojure-lsp` support and binary installation. (Branch: `feature/remove-clojure-lsp`)
 - [ ] **[7]** Dockerized test environment for installers. (Branch: `feature/docker-test-env`)
 - [ ] **[12]** Foundational Flutter support: Installer script, PATH, and Emacs configuration.
 
@@ -11,7 +12,7 @@
 - [ ] **[2]** Setup Android SDK & Licenses.
 - [ ] **[3]** Install Chrome/Chromium for web development.
 - [ ] **[4]** Install `mesa-utils` for Linux diagnostics.
-- [ ] **[5]** Automate `gopls` and `clojure-lsp` installations.
+- [ ] **[5]** Automate `gopls` installation.
 - [ ] **[6]** Audit all scripts for idempotency and safety.
 
 ### 💤 Backlog
