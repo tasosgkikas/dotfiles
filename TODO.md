@@ -3,7 +3,6 @@
 ## 📋 Kanban Board
 
 ### 🚧 In Progress
-- [ ] **[18]** Remove `clojure-lsp` support and binary installation. (Branch: `feature/remove-clojure-lsp`)
 - [ ] **[7]** Dockerized test environment for installers. (Branch: `feature/docker-test-env`)
 - [ ] **[12]** Foundational Flutter support: Installer script, PATH, and Emacs configuration.
 
