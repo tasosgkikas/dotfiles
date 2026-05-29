@@ -4,8 +4,9 @@
 
 ### 🚧 In Progress
 
-- [ ] **[7]** Dockerized test environment for installers. (Branch: `feature/docker-test-env`)
-- [ ] **[12]** Foundational Flutter support: Installer script, PATH, and Emacs configuration.
+- [ ] **[21]** Force-disable `lsp-mode` in Clojure buffers to prevent session interference. (Branch: `21-fix/force-disable-clojure-lsp`)
+- [ ] **[7]** Dockerized test environment for installers. (Branch: `7-feature/docker-test-env`)
+- [ ] **[12]** Foundational Flutter support: Installer script, PATH, and Emacs configuration. (Branch: `12-feature/dart-flutter`)
 
 ### 🎯 Selected for Development
 
